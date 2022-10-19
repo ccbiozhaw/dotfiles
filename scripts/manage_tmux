@@ -1,0 +1,72 @@
+#!/bin/sh
+
+if [ -z "$1" ]; then
+  echo "no arguments passed"
+  DIRECTORY=$(zoxide query --list | fzf)
+else
+  echo "arguments passed"
+  DIRECTORY=$(fd "$@" | fzf)
+fi
+
+# if empty exit
+if [ -z "$DIRECTORY" ]; then
+  exit 0
+fi
+
+if [[ ! -d "$DIRECTORY" ]]; then
+  # echo "this is a file"
+  PARENTDIR="$(dirname "$DIRECTORY")"
+  # echo "PARENTDIR $PARENTDIR"
+
+  CURRENTDIR=$PWD
+
+  cd $PARENTDIR
+
+  if [[ ! -z $(git rev-parse --show-toplevel 2>/dev/null) ]]; then
+    # echo "this is a git repo"
+    DIRECTORY=$(git rev-parse --show-toplevel)
+  else
+    # echo "this is not a git repo"
+    cd $CURRENTDIR
+    nvim "$DIRECTORY"
+    exit 0
+  fi
+fi
+
+FOLDER=$(basename $DIRECTORY)
+# echo "$FOLDER"
+
+SESSION=$(tmux list-sessions | grep $FOLDER | awk '{print $1}')
+SESSION=${SESSION//:/}
+# echo $SESSION
+
+if [ -z "$TMUX" ]; then
+  if [ -z "$SESSION" ]; then
+    # session does not exist
+    # echo "session does not exist"
+    cd $DIRECTORY
+    tmux new-session -s $FOLDER
+  else
+    # session exists
+    # echo "session exists"
+    # attach to session
+    tmux attach -t $SESSION
+  fi
+else 
+  if [ -z "$SESSION" ]; then
+    # session does not exist
+    # echo "session does not exist"
+    # jump to directory
+    cd $DIRECTORY
+    # create session
+    tmux new-session -d -s $FOLDER
+    # attach to session
+    tmux switch-client -t $FOLDER
+  else
+    # session exists
+    # echo "session exists"
+    # attach to session
+    # switch to tmux session
+    tmux switch-client -t $SESSION
+  fi
+fi

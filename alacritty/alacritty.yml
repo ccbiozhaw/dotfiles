@@ -1,0 +1,71 @@
+import:
+# uncomment the flavour you want below:
+- ~/.config/alacritty/catppuccin/kanagawa.yml
+# - ~/.config/alacritty/catppuccin/catppuccin-mocha.yml
+ # - ~/.config/alacritty/catppuccin/catppuccin-macchiato.yml
+ # - ~/.config/alacritty/catppuccin/catppuccin-frappe.yml
+#  - ~/.config/alacritty/catppuccin/catppuccin-latte.yml
+
+# defaults write -g AppleFontSmoothing -int 0
+
+alt_send_esc: false
+
+font:
+  # The normal (roman) font face to use.
+  normal:
+    family: JetBrainsMono Nerd Font Mono
+    style: Regular
+
+  bold:
+    family: JetBrainsMono Nerd Font Mono
+    style: Bold
+
+  italic:
+    family: JetBrainsMono Nerd Font Mono
+    style: Italic
+  # The bold font face
+  size: 19.0
+
+  ligatures: false
+
+  offset:
+    x: 0
+    y: 0
+
+  glyph_offset:
+    x: 0
+    y: 0
+
+cursor:
+  style:
+    blinking: Never
+
+  custom_cursor_colors: true
+  text: '#3B4252'
+  cursor: '#ECEFF4'
+
+window:
+  # opacity: 0.85
+  dynamic_padding: true
+  decorations: buttonless
+
+  dimensions:
+    columns: 100
+    lines: 30
+
+  padding:
+    x: 1
+    y: 0
+  # scrolling:
+
+  history: 10000
+
+  dynamic_title: true
+
+  # # If `true`, bold text is drawn using the bright color variants.
+  # draw_bold_text_with_bright_colors: true
+
+  # selection:
+  save_to_clipboard: true
+  live_config_reload: true
+
