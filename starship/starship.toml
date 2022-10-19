@@ -1,0 +1,16 @@
+add_newline = false
+
+format = """
+[](bold green) $directory$git_branch$git_status
+"""
+
+[git_branch]
+symbol = " "
+style = "bold red"
+format = "[$symbol$branch(:$remote_branch)]($style) "
+truncation_length = 8
+truncation_symbol = ""
+
+[git_status]
+style = "bold blue"
+format = '([\[$all_status$ahead_behind\]]($style) )'
