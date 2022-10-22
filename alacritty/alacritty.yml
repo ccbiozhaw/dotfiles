@@ -71,9 +71,9 @@ window:
 
 
 key_bindings:
-  - { key: C,        mods: Control|Shift, chars: "\x02\x63\x0a"            }
-  - { key: D,        mods: Control|Shift, chars: "\x02\x64\x0a"            }
-  - { key: N,        mods: Control|Shift, chars: "\x02\x6e\x0a"            }
-  - { key: P,        mods: Control|Shift, chars: "\x02\x70\x0a"            }
-  - { key: W,        mods: Control|Shift, chars: "\x02\x77\x0a"            }
-  - { key: X,        mods: Control|Shift, chars: "\x02\x78\x0a"            }
+  - { key: C,        mods: Control|Shift, chars: "\x02\x63"            }
+  - { key: D,        mods: Control|Shift, chars: "\x02\x64"            }
+  - { key: N,        mods: Control|Shift, chars: "\x02\x6e"            }
+  - { key: P,        mods: Control|Shift, chars: "\x02\x70"            }
+  - { key: W,        mods: Control|Shift, chars: "\x02\x77"            }
+  - { key: X,        mods: Control|Shift, chars: "\x02\x78"            }
